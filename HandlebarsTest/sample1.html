@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Handlebars.js Sample No.1</title>
+		<meta charset="utf-8">
+		<script src="../libs/jquery-1.9.1.js"></script>
+		<script src="../libs/handlebars.js"></script>
+		<script src="./sample1.js"></script>
+	</head>
+	<body>
+		
+		<!-- テンプレートの記述をする際は、以下のscriptタグから始める -->
+		<script type="text/x-handlebars-template" id="box1">
+			<h1>{{title}}</h1>
+			<h1>{{{text}}}</h1>
+		</script>
+		
+		<!-- 出力先 -->
+		<div id="output"></div>
+		
+	</body>
+</html>
