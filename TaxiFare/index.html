@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>タクシー料金計算</title>
+		<script src="../libs/jquery-1.9.1.js"></script>
+		<script src="../libs/handlebars.js"></script>
+		<script src="../libs/jquery.validate.js"></script>
+		<script src="main.js"></script>
+		<link rel="stylesheet" href="index.css" type="text/css">
+	</head>
+	<body>
+		
+		<h1>タクシー料金計算</h1>
+		
+		<form action="" id="fm">
+			<table>
+				<tr>
+					<th>乗車距離</th>
+					<td><input type="number" id="distance" name="distance" min="0" required /> km</td>
+					<td id="distance_err"></td>
+				</tr>
+				<tr>
+					<th>乗車時間</th>
+					<td><input type="number" id="minute" name="distance" min="0" required /> 分</td>
+					<td id="minute_err"></td>
+				</tr>
+				<tr>
+					<th>乗車時刻</th>
+					<td><input type="number" id="time" name="distance" max="23" min="0" required /> 時台</td>
+					<td id="time_err"></td>
+				</tr>
+			</table>
+			<p>
+				<input type="button" id="calc" value="料金計算" />
+			</p>
+		</form><br />
+		
+		<script type="text/x-handlebars-template" id="box">
+			<table>
+				<tr>
+					<th>初乗り料金</th>
+					<td>{{firstCalc}} 円</td>
+				</tr>
+				<tr>
+					<th>加算料金</th>
+					<td>{{addCalc}} 円</td>
+				</tr>
+				<tr>
+					<th>深夜早朝割増し</th>
+					<td>{{nightCalc}} 円</td>
+				</tr>
+				<tr>
+					<th>遠距離割引</th>
+					<td>{{longdisCalc}} 円</td>
+				</tr>
+				<tr>
+					<th>合計</th>
+					<td>{{sum}} 円</td>
+				</tr>
+				<tr>
+					<th>合計（税込）</th>
+					<td>{{sumtax}} 円</td>
+				</tr>
+			</table>
+		</script>
+		<div id="result"></div>
+		
+	</body>
+</html>
