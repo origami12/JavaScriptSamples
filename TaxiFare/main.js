@@ -47,10 +47,10 @@ $(function(){
 		//初乗り料金の計算と 加算料金計算
 		if(distance <= 0.8){
 			var firstCalc    = 320;
-			var distanceCalc = parseInt((distance-0.8)/0.213)*50;
+			var distanceCalc = parseInt(distance/0.213)*50;
 		}else if(distance <= 1.2){
 			var firstCalc    = 410;
-			var distanceCalc = parseInt((distance-1.2)/0.213)*50;
+			var distanceCalc = parseInt(distance/0.213)*50;
 		}else{
 			var firstCalc    = 500;
 			var distanceCalc = parseInt((distance-1.6)/0.213)*50;
@@ -58,11 +58,15 @@ $(function(){
 		var minuteCalc     = parseInt(minute*60/80)*50;
 		
 		//深夜・早朝割増の計算
-		var nightCalc      = parseInt((firstCalc+distanceCalc+minuteCalc)*0.1);
-		
+		var nightCalc = 0;
+		if(time >= 23 || time <= 5){
+			 nightCalc      = parseInt((firstCalc+distanceCalc+minuteCalc)*0.1);
+		}
+
 		//遠距離割引計算
-		if(firstCalc+distanceCalc+nightCalc > 2500){
-			var longdisCalc    = parseInt((firstCalc+distanceCalc+minuteCalc+nightCalc-2500)*0.1) * (-1);
+		var longdisCalc = 0;
+		if(firstCalc+distanceCalc+minuteCalc+nightCalc > 2500){
+			longdisCalc    = parseInt((firstCalc+distanceCalc+minuteCalc+nightCalc-2500)*0.1) * (-1);
 		}
 		
 		var sum    = firstCalc + distanceCalc + minuteCalc + nightCalc + longdisCalc;
